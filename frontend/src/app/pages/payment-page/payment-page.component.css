@@ -1,0 +1,99 @@
+.section {
+  padding: 16px;
+}
+
+.ticket-control {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.count {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Summary */
+.summary-card {
+  position: sticky;
+  top: 90px;
+}
+
+.movie-thumb {
+  width: 60px;
+  height: 90px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.total-row {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.ticket-hint {
+  font-size: 12px;
+}
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* keep material layout intact */
+.payment-option {
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+/* align icon + text */
+.option-content {
+  display: flex;
+  align-items: center;   /* ✅ vertical center */
+  gap: 12px;
+}
+
+/* icon style */
+.option-content mat-icon {
+  font-size: 22px;
+  color: #3f51b5;
+}
+
+/* hover effect */
+.payment-option:hover {
+  background: #f5f7fb;
+}
+
+/* selected effect (professional touch) */
+.mat-radio-checked {
+  background: #eef2ff;
+}
+.secure-banner { 
+    display: flex; 
+    align-items: center; 
+    gap: 8px; 
+    background: #f1f8e9; 
+    color: #2e7d32; 
+    padding: 10px 12px; 
+    border-radius: 8px; 
+    font-size: 13px; 
+    margin-bottom: 12px;
+ }
+ .secure-note {
+  margin: 8px 0 4px;
+  font-size: 12px;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.secure-note {
+  opacity: 0.85;
+}

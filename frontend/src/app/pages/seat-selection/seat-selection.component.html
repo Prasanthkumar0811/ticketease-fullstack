@@ -1,0 +1,97 @@
+<div class="container my-4">
+
+  <!-- Back -->
+  <button mat-button class="text-primary mb-3" (click)="goBack()">
+    ← Back
+  </button>
+
+  <!-- Header -->
+  <mat-card class="header-card">
+    <h3>{{ movie.name }}</h3>
+    <p class="text-muted">
+      🎭 {{ theatreName }} • ⏰ {{ showTime }} • 📅 {{ selectedDate | date:'dd MMM yyyy' }}
+    </p>
+  </mat-card>
+
+  <!-- Screen -->
+  <div class="screen">SCREEN</div>
+
+  <!-- SEAT SECTIONS -->
+  <mat-card class="seat-card">
+
+    <!-- BALCONY -->
+    <h5 class="seat-title">
+      Balcony – ₹{{ getSeatPrice('BALCONY') }}
+    </h5>
+    <div class="seat-grid">
+      <div
+        *ngFor="let seat of getSeats('BALCONY')"
+        class="seat"
+        [class.booked]="seat.booked"
+        [class.selected]="seat.selected"
+        (click)="toggleSeat(seat)">
+        {{ seat.id }}
+      </div>
+    </div>
+
+    <!-- FIRST -->
+    <h5 class="seat-title mt-4">
+      First Class – ₹{{ getSeatPrice('FIRST') }}
+    </h5>
+    <div class="seat-grid">
+      <div
+        *ngFor="let seat of getSeats('FIRST')"
+        class="seat"
+        [class.booked]="seat.booked"
+        [class.selected]="seat.selected"
+        (click)="toggleSeat(seat)">
+        {{ seat.id }}
+      </div>
+    </div>
+
+    <!-- BOX -->
+    <h5 class="seat-title mt-4">
+      Box – ₹{{ getSeatPrice('BOX')}}
+    </h5>
+    <div class="seat-grid">
+      <div
+        *ngFor="let seat of getSeats('BOX')"
+        class="seat"
+        [class.booked]="seat.booked"
+        [class.selected]="seat.selected"
+        (click)="toggleSeat(seat)">
+        {{ seat.id }}
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <span><i class="legend-box available"></i> Available</span>
+      <span><i class="legend-box selected"></i> Selected</span>
+      <span><i class="legend-box booked"></i> Booked</span>
+    </div>
+
+  </mat-card>
+
+  <!-- Summary -->
+  <mat-card class="summary-card mt-3">
+    <div>
+      <strong>Selected Seats:</strong>
+      {{ selectedSeatLabels}}
+    </div>
+
+    <div class="mt-2">
+      <strong>Total Fare:</strong> ₹{{ totalFare }}
+    </div>
+
+    <button
+      mat-raised-button
+      color="primary"
+      class="mt-3"
+      [disabled]="selectedSeats.length === 0"
+      (click)="continue()">
+      Continue to Payment
+    </button>
+  </mat-card>
+
+</div>

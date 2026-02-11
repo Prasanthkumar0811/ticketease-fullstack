@@ -1,0 +1,105 @@
+<div class="container my-4">
+
+  <!-- Back -->
+  <button mat-button class="text-primary px-0 mb-3" (click)="goBack()">
+    ← Back to Movies
+  </button>
+
+  <!-- MOVIE HERO -->
+ <!-- Movie Hero -->
+<mat-card class="movie-hero-card">
+
+  <div class="movie-hero-content">
+
+    <!-- Poster -->
+    <img
+      [src]="movie.image"
+      class="poster-lg"
+    />
+
+    <!-- Info -->
+    <div class="movie-info">
+      <h2>{{ movie.name }}</h2>
+
+      <div class="movie-meta">
+        <span>⏱ {{ movie.duration }}</span>
+        <span>⭐ {{ movie.rating }}</span>
+        <span>📅 {{ selectedDate | date:'dd MMM yyyy' }}</span>
+      </div>
+
+      <div class="movie-desc-box">
+        {{ movie.description }}
+      </div>
+    </div>
+
+  </div>
+
+</mat-card>
+
+
+  <!-- CAST & CREW -->
+  <div class="mt-4">
+  <h5 class="mb-3">Cast & Crew</h5>
+
+  <div class="cast-row">
+    <div
+      class="cast-item"
+      *ngFor="let person of movie.cast">
+
+      <img
+        [src]="person.image"
+        class="cast-img-lg"
+      />
+
+      <div class="cast-text">
+        <div class="cast-name">
+          {{ person.name }}
+        </div>
+        <div class="cast-role">
+          {{ person.role }}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+  <!-- THEATRES -->
+  <div class="mt-5">
+
+    <div
+      class="theatre-box mb-4"
+      *ngFor="let theatre of theatres">
+
+      <h6 class="mb-3 fw-semibold" style="font-size: 16px;">
+        {{ theatre.name }}
+      </h6>
+
+      <div class="d-flex flex-wrap gap-2">
+        <button
+          mat-stroked-button
+          class="time-pill"
+          *ngFor="let time of theatre.shows"
+          [class.active]="selectedTheatre === theatre && selectedTime === time"
+          (click)="selectTime(theatre, time)">
+          {{ time }}
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CONTINUE -->
+  <div class="text-end mt-5">
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!selectedTime"
+      (click)="continue()">
+      Continue
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,44 @@
+<div class="hero-title">
+  <h1>
+    Welcome to 
+    <span id="typed-text"></span>
+  </h1>
+</div>
+
+<div class="movie-grid">
+
+  <mat-card class="movie-card" *ngFor="let movie of movies">
+
+    <img mat-card-image [src]="movie.image" [alt]="movie.name" class="movie-poster">
+
+    <mat-card-content>
+      <h3>{{ movie.name }}</h3>
+      <p>⏱ {{ movie.duration }}</p>
+      <p>⭐ {{ movie.rating }}</p>
+
+      <!-- Date Selection -->
+      <div class="date-row">
+        <button
+          mat-stroked-button
+          *ngFor="let date of dates"
+          [class.selected]="selectedMovieId === movie.id &&
+  selectedDate?.toDateString() === date.toDateString()"
+          (click)="selectDate(movie.id, date)">
+          {{ date | date:'dd MMM' }}
+        </button>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions align="end">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="selectedMovieId !== movie.id || !selectedDate"
+        (click)="bookNow(movie)">
+        Book Now
+      </button>
+    </mat-card-actions>
+
+  </mat-card>
+
+</div>

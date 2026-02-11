@@ -1,0 +1,144 @@
+<div class="container my-4">
+
+  <!-- Back -->
+  <button mat-button class="text-primary px-0 mb-3" (click)="goBack()">
+    ← Back to Seats
+  </button>
+
+  <div class="row g-4">
+
+    <!-- LEFT -->
+    <div class="col-md-7">
+
+      <!-- Booking Summary -->
+      <mat-card class="section">
+        <h3>Booking Summary</h3>
+
+        <div class="summary-row">
+          <span>Movie</span>
+          <strong>{{ movie.name }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Theatre</span>
+          <strong>{{ theatre }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Date</span>
+          <strong>{{ selectedDate | date:'dd MMM yyyy' }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Show Time</span>
+          <strong>{{ showTime }}</strong>
+        </div>
+
+        <div class="summary-row">
+          <span>Seats</span>
+          <strong>{{ selectedSeats }}</strong>
+        </div>
+
+        <div class="summary-row total-row">
+          <span>Total Amount</span>
+          <strong>₹{{ totalAmount }}</strong>
+        </div>
+      </mat-card>
+
+      <!-- Payment Method -->
+      <mat-card class="section mt-3">
+        <h3>Payment Method</h3>
+       <div class="secure-banner">
+          <mat-icon>lock</mat-icon>
+          <span>Secure payment • Your details are encrypted</span>
+        </div>
+        <mat-radio-group [(ngModel)]="paymentMethod" class="payment-methods">
+
+  <mat-radio-button value="upi" class="payment-option">
+    <div class="option-content">
+      <mat-icon>account_balance_wallet</mat-icon>
+      <span>UPI</span>
+    </div>
+  </mat-radio-button>
+
+  <mat-radio-button value="card" class="payment-option">
+    <div class="option-content">
+      <mat-icon>credit_card</mat-icon>
+      <span>Credit / Debit Card</span>
+    </div>
+  </mat-radio-button>
+
+  <mat-radio-button value="netbanking" class="payment-option">
+    <div class="option-content">
+      <mat-icon>account_balance</mat-icon>
+      <span>Net Banking</span>
+    </div>
+  </mat-radio-button>
+
+</mat-radio-group>
+
+      </mat-card>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-md-5">
+
+      <mat-card class="section summary-card">
+
+        <div class="d-flex gap-3 align-items-start">
+          <img [src]="movie.image" class="movie-thumb" />
+
+          <div>
+            <h4 class="mb-1">{{ movie.name }}</h4>
+            <div class="text-muted small">
+              {{ theatre }}<br>
+              {{ selectedDate | date:'dd MMM yyyy' }} • {{ showTime }}
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="summary-row">
+          <span>Seats</span>
+          <strong>{{ selectedSeats.length }}</strong>
+        </div>
+        <hr>
+        <div class="summary-row">
+          <span>Ticket Amount</span>
+          <strong>₹{{ totalAmount }}</strong>
+        </div>
+        <div class="summary-row">
+          <span>Convenice Fee</span>
+          <strong>{{ convenienceFee }}</strong>
+        </div>
+        <div class="summary-row">
+          <span>GST (18%)</span>
+          <strong>{{ gstAmount }}</strong>
+        </div>
+
+        <div class="summary-row total-row">
+          <span>Total Amount</span>
+          <strong>₹{{ grandTotal }}</strong>
+        </div>
+
+         <p class="secure-note">
+    🔒 Payments are processed securely
+  </p>
+        <button
+          mat-raised-button
+          color="primary"
+          class="w-100 mt-3"
+          [disabled]="!paymentMethod"
+          (click)="payNow()">
+          Pay ₹{{ grandTotal }}
+        </button>
+
+      </mat-card>
+
+    </div>
+
+  </div>
+
+</div>

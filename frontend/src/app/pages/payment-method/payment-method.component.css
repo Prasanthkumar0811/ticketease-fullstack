@@ -1,0 +1,130 @@
+.section {
+  padding: 16px;
+}
+.payment-header {
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta {
+  font-size: 13px;
+  color: #666;
+  margin: 4px 0;
+}
+
+.theatre {
+  font-size: 13px;
+  color: #999;
+}
+
+.amount-badge {
+  font-size: 20px;
+  font-weight: 700;
+  color: #3f51b5;
+}
+
+.secure-strip {
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: #f1f8e9;
+  color: #2e7d32;
+  border-radius: 8px;
+  font-size: 12px;
+}
+mat-card.section {
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+h4 {
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.summary-card {
+  position: sticky;
+  top: 20px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.total-row {
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.trust-line {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #2e7d32;
+  text-align: center;
+}
+.pay-btn {
+  height: 48px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.processing {
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 500;
+  color: #3f51b5;
+}
+.processing-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.method-badge {
+  font-size: 12px;
+  color: #3f51b5;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+
+.success-screen {
+  margin: 40px auto;
+  padding: 24px;
+  max-width: 420px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.lottie-box {
+  width: 180px;
+  height: 180px;
+  margin-bottom: 12px;
+}
+
+.processing-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 32px;
+  color: #3f51b5;
+}

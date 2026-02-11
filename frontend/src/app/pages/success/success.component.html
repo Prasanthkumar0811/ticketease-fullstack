@@ -1,0 +1,75 @@
+<div class="success-page">
+
+  <mat-card class="success-card">
+
+    <!-- Success Icon -->
+    <div class="icon-circle">
+  <div id="success-lottie" class="lottie-success"></div>
+</div>
+
+    <h2>Booking Confirmed!</h2>
+    <p class="subtitle">
+      Your tickets have been booked successfully 🎉
+    </p>
+
+    <!-- Booking Details -->
+    <div class="details-box">
+
+      <div class="row">
+        <span>Movie</span>
+        <strong>{{ movieName }}</strong>
+      </div>
+
+      <div class="row">
+        <span>Theatre</span>
+        <strong>{{ theatre }}</strong>
+      </div>
+
+      <div class="row">
+        <span>Date</span>
+        <strong>{{ selectedDate | date:'dd MMM yyyy' }}</strong>
+      </div>
+
+      <div class="row">
+        <span>Show Time</span>
+        <strong>{{ showTime }}</strong>
+      </div>
+
+      <div class="row">
+        <span>Seats</span>
+        <strong>{{ seats.join(', ') }}</strong>
+      </div>
+
+      <div class="row">
+        <span>No. of Seats</span>
+        <strong>{{ seatCount }}</strong>
+      </div>
+
+      <div class="row">
+        <span>Total Amount</span>
+        <strong class="amount">₹{{ amount }}</strong>
+      </div>
+
+      <div class="row booking-id">
+        <span>Booking ID</span>
+        <strong>{{ bookingId }}</strong>
+      </div>
+
+    </div>
+
+    <!-- Action -->
+    <button
+      mat-raised-button
+      color="primary"
+      class="book-again-btn"
+      (click)="bookAgain()">
+      Book Another Ticket
+    </button>
+
+    <p class="redirect">
+      Redirecting to home in 5 seconds…
+    </p>
+
+  </mat-card>
+
+</div>

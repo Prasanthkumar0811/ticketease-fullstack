@@ -1,0 +1,127 @@
+/* Poster */
+.poster-lg {
+  max-height: 280px;
+  object-fit: cover;
+}
+
+/* Movie description */
+.movie-desc {
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Cast */
+.cast-strip {
+  overflow-x: auto;
+}
+
+.cast-person {
+  width: 110px;
+}
+
+.cast-img-lg {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+/* Theatre */
+.theatre-box {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.time-pill {
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-weight: 500;
+}
+
+.time-pill.active {
+  background-color: #3f51b5;
+  color: #fff;
+  border-color: #3f51b5;
+}
+/* Cast row */
+.cast-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Single cast item */
+.cast-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 220px;
+}
+
+/* Cast image */
+.cast-img-lg {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Cast text */
+.cast-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.cast-name {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cast-role {
+  font-size: 13px;
+  font-weight: 600; /* 👈 BOLD role as you asked */
+  color: #555;
+}
+/* Highlighted movie description */
+.movie-desc-box {
+  margin-top: 10px;
+  padding: 12px 16px;
+  background: #f5f7fa;
+  border-left: 4px solid #3f51b5;
+  border-radius: 6px;
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+.movie-hero-card {
+  padding: 16px;
+}
+
+.movie-hero-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.poster-lg {
+  width: 140px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.movie-info {
+  flex: 1;
+}
+
+.movie-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
+}
+

@@ -1,0 +1,57 @@
+<div class="auth-container">
+
+  <!-- LEFT SIDE (Login Form) -->
+  <div class="auth-left">
+
+    <mat-card class="login-card">
+
+      <h2>Welcome Back 👋</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()" autocomplete="off">
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" autocomplete="new-email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" autocomplete="new-password">
+        </mat-form-field>
+
+        <div class="error-msg" *ngIf="backendError" style="color: red;">
+          {{ backendError }}
+        </div>
+
+        <button mat-raised-button
+                color="primary"
+                class="w-100"
+                [disabled]="loginForm.invalid || isSubmitting">
+          Login
+        </button>
+
+      </form>
+
+      <p class="login-link">
+        Don't have an account?
+        <a routerLink="/register">Register here</a>
+      </p>
+
+    </mat-card>
+
+  </div>
+
+  <!-- RIGHT SIDE (Animation / Branding) -->
+  <div class="auth-right">
+
+    <div class="branding-content">
+      <h1>TicketEase 🎬</h1>
+      <p>Book movies faster. Smarter. Easier.</p>
+    </div>
+
+  </div>
+
+</div>
+<div class="loading-overlay" *ngIf="isSubmitting">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>

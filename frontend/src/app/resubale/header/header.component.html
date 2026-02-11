@@ -1,0 +1,51 @@
+<header class="app-header shadow-sm">
+  <div class="container">
+
+    <div class="d-flex align-items-center justify-content-between py-3">
+
+      <!-- Brand -->
+      <div class="d-flex align-items-center gap-3">
+        <span class="brand-icon">🎬</span>
+        <div>
+          <h1 class="brand-title mb-0">TicketEase</h1>
+          <small class="brand-tagline">
+            Movie tickets made easy
+          </small>
+        </div>
+      </div>
+
+      <!-- Right (future use, keep empty now) -->
+      <div class="header-right d-none d-md-flex">
+        <!-- Reserved for future (login / city / profile) -->
+         <!-- Profile Icon -->
+<button mat-icon-button [matMenuTriggerFor]="profileMenu">
+  <mat-icon>account_circle</mat-icon>
+</button>
+
+<!-- Dropdown Menu -->
+<mat-menu #profileMenu="matMenu" >
+
+  <!-- Username -->
+  <div class="px-3 py-2 username">
+    {{ username | titlecase }}
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Logout -->
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
+  </button>
+
+</mat-menu>
+
+      </div>
+
+    </div>
+
+  </div>
+</header>
+<div class="loading-overlay" *ngIf="isLoggingout">
+  <mat-spinner diameter="50"></mat-spinner>
+</div>

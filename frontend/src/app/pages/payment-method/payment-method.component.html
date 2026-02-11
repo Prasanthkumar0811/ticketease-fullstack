@@ -1,0 +1,206 @@
+<div class="container my-4" *ngIf="!isProcessing && !paymentCompleted">
+
+  <button mat-button class="text-primary mb-3" (click)="goBack()">
+    ← Back
+  </button>
+
+  <div class="row g-4">
+
+    <!-- LEFT -->
+    <div class="col-md-7">
+
+     <mat-card class="section payment-header">
+  <div class="header-row">
+    <div>
+      <h3>{{ movie }}</h3>
+      <p class="meta">
+        {{ selectedDate | date:'dd MMM yyyy' }} • {{ showTime }}
+      </p>
+      <p class="theatre">{{ theatre }}</p>
+      <p class="method-badge">
+        Payment Method: {{ paymentMethod | titlecase }}
+      </p>
+    </div>
+
+    <div class="amount-badge">
+      ₹{{ amount }}
+    </div>
+  </div>
+
+  <div class="secure-strip">
+    🔒 100% Secure Payment • Encrypted
+  </div>
+</mat-card>
+
+
+      <mat-card class="section mt-3">
+        <form [formGroup]="paymentForm" autocomplete="off" >
+
+          <!-- UPI -->
+          <div *ngIf="paymentMethod === 'upi'">
+            <h4>UPI Payment</h4>
+
+            <mat-form-field class="w-100">
+              <mat-label>UPI ID</mat-label>
+              <input matInput formControlName="upiId">
+             <mat-error *ngIf="
+      paymentForm.get('upiId')?.touched &&
+      paymentForm.get('upiId')?.hasError('required')
+    ">
+      UPI ID is required
+    </mat-error>
+
+    <mat-error *ngIf="
+      paymentForm.get('upiId')?.touched &&
+      paymentForm.get('upiId')?.hasError('pattern')
+    ">
+      Enter valid UPI ID (examplebank)
+    </mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- CARD -->
+          <div *ngIf="paymentMethod === 'card'">
+            <h4>Card Payment</h4>
+
+            <mat-form-field class="w-100">
+              <mat-label>Card Number</mat-label>
+              <input matInput formControlName="cardNumber" autocomplete="cc-number" autocorrect="off">
+ <mat-error *ngIf="
+      paymentForm.get('cardNumber')?.touched &&
+      paymentForm.get('cardNumber')?.invalid
+    ">
+      Card number must be 16 digits
+    </mat-error>            </mat-form-field>
+
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="w-100">
+                  <mat-label>Expiry (MM/YY)</mat-label>
+                  <input matInput formControlName="expiry" autocorrect="off" autocomplete="cc-exp">
+                  <mat-error *ngIf="
+                     paymentForm.get('expiry')?.touched &&
+                    paymentForm.get('expiry')?.hasError('required')
+                  ">
+                    Expiry date is required
+                   </mat-error>
+                   <mat-error *ngIf="
+                     paymentForm.get('expiry')?.touched &&
+                    paymentForm.get('expiry')?.hasError('pattern')
+                  ">
+                    Invalid Format (MM/YY)
+                   </mat-error>  
+                   <mat-error *ngIf="
+                     paymentForm.get('expiry')?.touched &&
+                    paymentForm.get('expiry')?.hasError('expired')
+                  ">
+                    Card has Expired
+                   </mat-error>                
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="w-100">
+                  <mat-label>CVV</mat-label>
+                  <input matInput type="password" formControlName="cvv" autocomplete="cc-csc" autocorrect="off">
+<mat-error *ngIf="
+          paymentForm.get('cvv')?.touched &&
+          paymentForm.get('cvv')?.invalid
+        ">
+          CVV must be 3 digits
+        </mat-error>                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <!-- NET BANKING -->
+          <div *ngIf="paymentMethod === 'netbanking'">
+            <h4>Net Banking</h4>
+
+            <mat-form-field class="w-100">
+              <mat-label>Account Number</mat-label>
+              <input matInput formControlName="accountNumber">
+<mat-error *ngIf="
+      paymentForm.get('accountNumber')?.touched &&
+      paymentForm.get('accountNumber')?.invalid
+    ">
+      Account number must be 9–18 digits
+    </mat-error>            </mat-form-field>
+
+            <mat-form-field class="w-100">
+              <mat-label>IFSC Code</mat-label>
+              <input matInput formControlName="ifsc">
+ <mat-error *ngIf="
+      paymentForm.get('ifsc')?.touched &&
+      paymentForm.get('ifsc')?.invalid
+    ">
+      Invalid IFSC code
+    </mat-error>            </mat-form-field>
+
+            <mat-form-field class="w-100">
+              <mat-label>Account Holder Name</mat-label>
+              <input matInput formControlName="accountHolder">
+<mat-error *ngIf="
+      paymentForm.get('accountHolder')?.touched &&
+      paymentForm.get('accountHolder')?.hasError('required')
+    ">
+      Account holder name is required
+    </mat-error>            </mat-form-field>
+          </div>
+
+        </form>
+      </mat-card>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-md-5">
+     <mat-card class="section summary-card">
+
+  <h4>Order Summary</h4>
+
+  <div class="summary-row">
+    <span>Seats</span>
+    <strong>{{ seats.join(', ') }}</strong>
+  </div>
+
+  <div class="summary-row small-row">
+    <span>Tickets</span>
+    <strong>{{ seats.length }}</strong>
+  </div>
+
+  <hr>
+
+  <div class="summary-row total-row">
+    <span>Total Payable</span>
+    <strong>₹{{ amount }}</strong>
+  </div>
+
+  <div class="trust-line">
+    🛡 PCI-DSS Secure • Safe Checkout
+  </div>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="w-100 mt-3 pay-btn"
+    [disabled]="paymentForm.invalid || isProcessing"
+    (click)="submitPayment()">
+    Pay ₹{{ amount }}
+  </button>
+
+</mat-card>
+
+    </div>
+
+  </div>
+
+</div>
+ <div *ngIf="isProcessing" class="processing-overlay">
+  <mat-spinner diameter="50"></mat-spinner>
+  <p class="mt-2">Processing payment…</p>
+</div>
+<div *ngIf="paymentCompleted" class="success-screen">
+   <div id="lottie-container" class="lottie-box"></div>
+  <h3>Payment Completed</h3>
+  <p>Please wait while we confirm your booking…</p>
+</div>
