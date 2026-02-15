@@ -13,7 +13,6 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/authverify',router)
-const PORT=process.env.PORT || 3000
-app.listen(PORT,"0.0.0.0",()=>{
+app.listen(process.env.PORT,()=>{
     console.log('Started')
 })
