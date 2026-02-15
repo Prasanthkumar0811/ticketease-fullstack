@@ -26,3 +26,8 @@ ng serve
 cd backend
 npm install
 node index.js
+
+Create a .env file inside backend folder and add:
+
+MONGO_URL=your_mongodb_connection_string
+PORT=3000
