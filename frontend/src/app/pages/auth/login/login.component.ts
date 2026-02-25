@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AuthService } from '../../../_services/auth.service';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import lottie from 'lottie-web';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -28,7 +28,8 @@ constructor(
   private fb:FormBuilder,
   private authService:AuthService,
   private router:Router,
-  private snackBar:MatSnackBar
+  private snackBar:MatSnackBar,
+  private _activateRoute:ActivatedRoute
 ){}
 ngOnInit(){
   this.loginForm=this.fb.group({
@@ -59,10 +60,16 @@ login() {
 
         // ✅ store user name (optional)
         localStorage.setItem('fullname', res.user.name);
+        const redirectURL=this._activateRoute.snapshot.paramMap.get('redirectURL')
 
         setTimeout(()=>{
           this.onSuccess('Login successful')
-         this.router.navigate(['/movies']);
+          if(redirectURL){
+            this.router.navigateByUrl(redirectURL)
+          }else{
+            this.router.navigate(['/movies']);
+          }
+         
         },3000)        
       },
       error: (err) => {

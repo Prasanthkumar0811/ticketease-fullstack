@@ -51,7 +51,7 @@ export const login=async(req,res)=>{
     if(!isMatch){
         return res.status(400).json({message:'Invalid Password'})
     }
-    const token=jwt.sign({id:user._id},JWT_SECRET,{expiresIn:'1h'})
+    const token=jwt.sign({id:user._id},JWT_SECRET,{expiresIn:'10m'})
     res.status(200).json({
       message:'Login successful',
       token,
