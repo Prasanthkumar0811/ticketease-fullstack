@@ -4,7 +4,7 @@ export const MOVIES: Movie[] = [
   {
     id: 1,
     name: 'Interstellar',
-    duration: '2h 49m',
+    duration: '2h 50m',
     rating: 8.6,
     image: '/movies/interstellar.jpg',
     description:
